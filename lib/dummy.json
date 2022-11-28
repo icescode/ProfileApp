@@ -1,0 +1,55 @@
+{
+    "name" : "Hardiyanto",
+    "tagline" : "A Mystical Journey Through The Stars",
+    "img_background_url" : "https://iili.io/H3tOb8G.jpg",
+    "img_profile_url" : "https://iili.io/HdzEeqP.jpg",
+    "about_heading" : "Tentang Saya",
+    "content_heading" : "Konten",
+    "content_pretext" : "Silahkan tap salah satu kategori di bawah ini",
+    "about" :"Hi Saya Hardiyanto, berikut adalah kumpulan catatan kerja dan hobi. Beberapa artikel merupakan artikel teknologi informasi dari sebuah studi kasus project, source code tersedia di github (public) dan merupakan koleksi koleksi lama dalam bahasa C/C++/Objective-C/Phyton dan sebagainya.",
+    "stat" : [
+        {
+            "title":"Artikel",
+            "value" : 4
+        },
+        {
+            "title":"Buku",
+            "value" : 2
+        },
+        {
+            "title":"Git Repo",
+            "value" : 12
+        }
+    ],
+    "content" :[
+        {
+            "index" : 1,
+            "file" : "PDF 2 MB",
+            "title":"Masalah PostgreSQL Pemerintah Philipina",
+            "simpledesc":"Lumpuhnya layanan database server salah satu kementrian pemerintah di Philipina (sebuah catatan studi kasus dari projek di tahun 2022)",
+            "date" : "2022-07-01"
+        },
+        {
+            "index" : 2,
+            "file" : "PDF 1 MB",
+            "title":"Membedah Sistim Informasi Logistik",
+            "simpledesc":"Sebuah rujukan bagaimana membangun sistim informasi logistik modern dengan menggunakan ERP (sebuah catatan studi kasus dari projek di Sinarmas Logistik Indonesia)",
+            "date" : "2021-03-11"        
+        },
+        {
+            "index" : 3,
+            "file" : "PDF 2 MB",
+            "title":"Membangun Sistim Informasi Big Data",
+            "simpledesc":"Artikel tutorial bagaimana membangun sistim informasi big data menggunakan Hadoop, Spark, Parquet dan Driller dari opensource Apache (sebuah catatan studi kasus dari projek di TMBigData Singapura)",
+            "date" : "2020-09-22"        
+        },
+        {
+            "index" : 4,
+            "file" : "PDF 2 MB",
+            "title":"Kumpulan Puisi Cinta Terpilih",
+            "simpledesc":"Kumpulan puisi cinta terpilih yang ditulis dalam kurun waktu 2014 - 2022, disajikan dalam bentuk e-book. Puisi ini ditulis di China, Dresden, Kuala lumpur, Singapura, Jepang, Philipina dan Indonesia",
+            "date" : "2020-09-22"
+        }
+      
+    ]
+}
