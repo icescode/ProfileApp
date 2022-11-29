@@ -1,4 +1,55 @@
 // ignore_for_file: non_constant_identifier_names
+class Blocks {
+  String? title;
+  List<BlockItem>? blockItem;
+
+  Blocks({this.title, this.blockItem});
+
+  Blocks.fromJson(Map<String, dynamic> json) {
+    title = json['title'];
+    if (json['lists'] != null) {
+      blockItem = <BlockItem>[];
+      json['lists'].forEach((v) {
+        blockItem!.add(BlockItem.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['title'] = title;
+    if (blockItem != null) {
+      data['lists'] = blockItem!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class BlockItem {
+  String? timeText;
+  String? title;
+  String? subtitle;
+  String? desc;
+
+  BlockItem({this.timeText, this.title, this.subtitle, this.desc});
+
+  BlockItem.fromJson(Map<String, dynamic> json) {
+    timeText = json['time_text'];
+    title = json['title'];
+    subtitle = json['subtitle'];
+    desc = json['desc'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['time_text'] = timeText;
+    data['title'] = title;
+    data['subtitle'] = subtitle;
+    data['desc'] = desc;
+    return data;
+  }
+}
+
 class Stat {
   String? title;
   String? api;
@@ -37,8 +88,20 @@ class ProfileData {
   String? content_heading;
   String? content_pretext;
   String? navigator_title_back;
+  List<Blocks>? blocks;
 
-  ProfileData({this.name, this.stat, this.about, this.tagline, this.imgProfileUrl, this.imgBackgroundUrl, this.about_heading, this.content_heading, this.content_pretext, this.navigator_title_back});
+  ProfileData(
+      {this.name,
+      this.stat,
+      this.about,
+      this.tagline,
+      this.imgProfileUrl,
+      this.imgBackgroundUrl,
+      this.about_heading,
+      this.content_heading,
+      this.content_pretext,
+      this.navigator_title_back,
+      this.blocks});
 
   ProfileData.fromJson(Map<String, dynamic> json) {
     name = json['name'];
@@ -57,13 +120,12 @@ class ProfileData {
     content_pretext = json['content_pretext'];
     navigator_title_back = json['navigator_title_back'];
 
-    //   if (json['content'] != null) {
-    //     content = <Content>[];
-    //     json['content'].forEach((v) {
-    //       content!.add(Content.fromJson(v));
-    //     });
-    //   }
-    // }
+    if (json['blocks'] != null) {
+      blocks = <Blocks>[];
+      json['blocks'].forEach((v) {
+        blocks!.add(Blocks.fromJson(v));
+      });
+    }
 
     // ignore: unused_element
     Map<String, dynamic> toJson() {
@@ -72,6 +134,7 @@ class ProfileData {
       if (stat != null) {
         data['stat'] = stat!.map((v) => v.toJson()).toList();
       }
+
       data['about'] = about;
       data['tagline'] = tagline;
       data['img_profile_url'] = imgProfileUrl;
@@ -80,6 +143,11 @@ class ProfileData {
       data['content_heading'] = content_heading;
       data['content_pretext'] = content_pretext;
       data['navigator_title_back'] = navigator_title_back;
+
+      data['blocks'] = blocks;
+      if (blocks != null) {
+        data['blocks'] = blocks!.map((v) => v.toJson()).toList();
+      }
 
       // if (content != null) {
       //   data['content'] = content!.map((v) => v.toJson()).toList();

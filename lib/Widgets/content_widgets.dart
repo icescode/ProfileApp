@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:webapp/Widgets/libshares.dart';
-import 'package:webapp/Widgets/contentdataclass.dart';
+import 'package:webapp/Shares/libshares.dart';
 import 'package:universal_io/io.dart';
 import 'dart:convert';
 import 'dart:io';
-import 'package:webapp/Widgets/webviewer.dart';
+import 'package:webapp/Classes/content_data.dart';
 
 class ContentPage extends StatefulWidget {
   final String apiUrl;
@@ -44,9 +43,9 @@ class _ContentPage extends State<ContentPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        foregroundColor: Colors.black,
-        backgroundColor: Colors.white,
-        title: Text(title_bar),
+        foregroundColor: Colors.white,
+        backgroundColor: MyCustomColor.gray(),
+        title: Text(title_bar, style: TextStyle(fontSize: MyFontSize.fontMedium(), fontWeight: FontWeight.normal, color: Colors.white)),
       ),
       //body: Column(children: [card, _drawList()]),
       body: Column(
@@ -57,28 +56,25 @@ class _ContentPage extends State<ContentPage> {
 
   // ignore: unused_element
   Widget _containerVisualData(String title, String subtitle) {
-    Color greenColor = MyCustomColor.green();
-    Color grayColor = MyCustomColor.gray();
-
     return Padding(
       padding: const EdgeInsets.all(5),
       child: Card(
         clipBehavior: Clip.antiAlias,
-        color: greenColor,
+        color: MyCustomColor.blue(),
         shape: RoundedRectangleBorder(
-          side: BorderSide(color: greenColor, width: 2),
+          side: BorderSide(color: MyCustomColor.grayLight(), width: 2),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           ListTile(
             tileColor: Colors.white,
-            leading: Icon(Icons.local_florist, size: 28, color: greenColor),
-            title: Text(title, style: TextStyle(fontSize: 28, fontWeight: FontWeight.normal, color: grayColor)),
+            leading: Icon(Icons.local_florist, size: 28, color: MyCustomColor.blue()),
+            title: Text(title, style: TextStyle(fontSize: 28, fontWeight: FontWeight.normal, color: MyCustomColor.grayLight())),
             subtitle: Text(subtitle, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.normal, color: Colors.black87)),
           ),
           Container(
             padding: const EdgeInsets.all(20),
-            color: greenColor,
+            color: MyCustomColor.blue(),
           )
         ]),
       ),
@@ -93,26 +89,32 @@ class _ContentPage extends State<ContentPage> {
         return ListTile(
           dense: true,
           visualDensity: const VisualDensity(vertical: 4.0),
-          leading: const Icon(Icons.picture_as_pdf, size: 32, color: Colors.redAccent),
-          title: Text(dataSource[index].title.toString(), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black54)),
-          subtitle: Text(dataSource[index].simpledesc.toString(), style: const TextStyle(fontSize: 20, fontWeight: FontWeight.normal, color: Colors.black45)),
+          leading: Icon(Icons.picture_as_pdf, size: 32, color: MyCustomColor.blue()),
+          title: Text(dataSource[index].title.toString(), style: TextStyle(fontSize: MyFontSize.fontNormal(), fontWeight: FontWeight.bold, color: MyCustomColor.blue())),
+          subtitle: Text(dataSource[index].simpledesc.toString(), style: TextStyle(fontSize: MyFontSize.fontNormal(), fontWeight: FontWeight.normal, color: MyCustomColor.gray())),
           onTap: () {
             debugPrint('Index $index');
             _loadWebTools(dataSource[index].fileurl.toString());
           },
+          shape: Border(
+            bottom: BorderSide(
+              color: MyCustomColor.blue(),
+              width: .5,
+            ),
+          ),
         );
       },
     );
   }
 
   void _loadWebTools(String contentUrl) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => WebTools(
-                  url: contentUrl,
-                  title: title_bar,
-                )));
+    debugPrint('URL PDF $contentUrl');
+    // Navigator.push(
+    //     context,
+    //     MaterialPageRoute(
+    //         builder: (context) => PDFViewer(
+    //               url: contentUrl,
+    //             )));
   }
 
   Widget _basicCard(String title, String subtitle) {
@@ -120,18 +122,21 @@ class _ContentPage extends State<ContentPage> {
       padding: const EdgeInsets.all(5),
       child: Card(
         clipBehavior: Clip.antiAlias,
-        color: MyCustomColor.green(),
+        color: MyCustomColor.blue(),
         shadowColor: Colors.black,
         shape: RoundedRectangleBorder(
-          side: BorderSide(color: MyCustomColor.green(), width: 1.0),
-          borderRadius: BorderRadius.circular(8),
+          side: BorderSide(color: MyCustomColor.grayLight(), width: 1.0),
+          borderRadius: BorderRadius.circular(4),
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           ListTile(
             tileColor: Colors.white,
-            leading: Icon(Icons.local_florist, size: 32, color: MyCustomColor.green()),
-            title: Text(title, style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.black)),
-            subtitle: Text(subtitle, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.normal, color: Colors.black87)),
+            leading: SizedBox(
+              height: double.infinity,
+              child: Icon(Icons.local_florist, size: 48, color: MyCustomColor.gray()),
+            ),
+            title: Text(title, style: TextStyle(fontSize: MyFontSize.fontMedium(), fontWeight: FontWeight.normal, color: MyCustomColor.gray())),
+            subtitle: Text(subtitle, style: TextStyle(fontSize: MyFontSize.fontNormal(), fontWeight: FontWeight.normal, color: Colors.black87)),
           ),
           const SizedBox(height: 30),
         ]),

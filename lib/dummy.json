@@ -51,5 +51,41 @@
             "date" : "2020-09-22"
         }
       
+    ],
+    "blocks" :[
+        {
+            "title" : "EXPERIENCE",
+            "lists" : [
+                {
+                    "time_text" : "2020 - 2022",
+                    "title" : "Senior Sales Executive",
+                    "subtitle" :"ABC Printers", 
+                    "desc" : "My Role was to win new business from cold account within the corporate market and selling the Company's suite of digital solutions."
+                },
+                {
+                    "time_text" : "2018 - 2020",
+                    "title" : "Sales Executive",
+                    "subtitle" :"Pizza Huts", 
+                    "desc" : "My Role was to generate sell, negotiate, close and secure new business opportunities through cold calling."
+                }
+            ]
+        },
+        {
+            "title" : "EDUCATION",
+            "lists" : [
+                {
+                    "time_text" : "2016 - 2019",
+                    "title" : "Head Royce School US",
+                    "subtitle" :"Business And Managament", 
+                    "desc" : "Graduated with distinction GWA 3.75, completed internship at Head ROyce School."
+                },
+                {
+                    "time_text" : "2013 - 2016",
+                    "title" : "St. Kalling's BDA",
+                    "subtitle" :"BS. Sales", 
+                    "desc" : "Graduated with distinction GWA 3.75, leadership awardee  for Student Council service."
+                }
+            ]
+        }
     ]
 }
