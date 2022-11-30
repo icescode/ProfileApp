@@ -1,7 +1,7 @@
 {
     "name" : "Hardiyanto",
     "tagline" : "A Mystical Journey Through The Stars",
-    "img_background_url" : "https://iili.io/H3tOb8G.jpg",
+    "img_background_url" : "https://iili.io/HKSCwMP.jpg",
     "img_profile_url" : "https://iili.io/HdzEeqP.jpg",
     "about_heading" : "Tentang Saya",
     "content_heading" : "Konten",
@@ -9,7 +9,7 @@
     "about" :"Hi Saya Hardiyanto, berikut adalah kumpulan catatan kerja dan hobi. Beberapa artikel merupakan artikel teknologi informasi dari sebuah studi kasus project, source code tersedia di github (public) dan merupakan koleksi koleksi lama dalam bahasa C/C++/Objective-C/Phyton dan sebagainya.",
     "stat" : [
         {
-            "title":"Artikel",
+            "title":"Projek",
             "value" : 4
         },
         {
@@ -21,71 +21,63 @@
             "value" : 12
         }
     ],
-    "content" :[
-        {
-            "index" : 1,
-            "file" : "PDF 2 MB",
-            "title":"Masalah PostgreSQL Pemerintah Philipina",
-            "simpledesc":"Lumpuhnya layanan database server salah satu kementrian pemerintah di Philipina (sebuah catatan studi kasus dari projek di tahun 2022)",
-            "date" : "2022-07-01"
-        },
-        {
-            "index" : 2,
-            "file" : "PDF 1 MB",
-            "title":"Membedah Sistim Informasi Logistik",
-            "simpledesc":"Sebuah rujukan bagaimana membangun sistim informasi logistik modern dengan menggunakan ERP (sebuah catatan studi kasus dari projek di Sinarmas Logistik Indonesia)",
-            "date" : "2021-03-11"        
-        },
-        {
-            "index" : 3,
-            "file" : "PDF 2 MB",
-            "title":"Membangun Sistim Informasi Big Data",
-            "simpledesc":"Artikel tutorial bagaimana membangun sistim informasi big data menggunakan Hadoop, Spark, Parquet dan Driller dari opensource Apache (sebuah catatan studi kasus dari projek di TMBigData Singapura)",
-            "date" : "2020-09-22"        
-        },
-        {
-            "index" : 4,
-            "file" : "PDF 2 MB",
-            "title":"Kumpulan Puisi Cinta Terpilih",
-            "simpledesc":"Kumpulan puisi cinta terpilih yang ditulis dalam kurun waktu 2014 - 2022, disajikan dalam bentuk e-book. Puisi ini ditulis di China, Dresden, Kuala lumpur, Singapura, Jepang, Philipina dan Indonesia",
-            "date" : "2020-09-22"
-        }
-      
-    ],
     "blocks" :[
         {
-            "title" : "EXPERIENCE",
+            "title" : "PROJECTS",
+            "lists" : [
+                {
+                    "time_text" : "2022 - 2022",
+                    "title" : "Sistem Auditor",
+                    "subtitle" :"Kementrian Kesehatan Philipina", 
+                    "desc" : "Audit holistik sistem Teknologi Informasi dan infrastruktur Kementrian Kesehatan Philipina."
+                },
+                {
+                    "time_text" : "2020 - 2021",
+                    "title" : "Back End Developer Arsitek",
+                    "subtitle" :"Sinarmas Logistik Indonesia", 
+                    "desc" : "Membangun sistem back end logistik dan transportasi menggunakan sistem ERP bersama sama team internal front-end."
+                },
+                {
+                    "time_text" : "2019 - 2020",
+                    "title" : "Big Data Command Center ",
+                    "subtitle" :"TMBigData Singapore", 
+                    "desc" : "Membangun sistem manajemen big data front-end untuk memudahkan tata kelola Apache Hadoop, Spark, Parquet dan Driller."
+                }                
+            ]
+        },
+        {
+            "title" : "BUKU",
             "lists" : [
                 {
                     "time_text" : "2020 - 2022",
-                    "title" : "Senior Sales Executive",
-                    "subtitle" :"ABC Printers", 
-                    "desc" : "My Role was to win new business from cold account within the corporate market and selling the Company's suite of digital solutions."
+                    "title" : "Petunjuk Operasional Big Data menggunakan BigQ Manager",
+                    "subtitle" :"https://payhip.com/b/nTh9G", 
+                    "desc" : "Buku ini merupakan petunjuk operasional yang dirancang untuk staff atau data entry operator atau sejenis nya, buku ini mengupas dan membimbing bagaimana melakukan proses storing data dengan metode langsung, append dan partisi dari beragam sumber data RDBMS."
                 },
                 {
-                    "time_text" : "2018 - 2020",
-                    "title" : "Sales Executive",
-                    "subtitle" :"Pizza Huts", 
-                    "desc" : "My Role was to generate sell, negotiate, close and secure new business opportunities through cold calling."
+                    "time_text" : "2020 - 2022",
+                    "title" : "Tata Kelola Big Data menggunakan BigQ Manager",
+                    "subtitle" :"https://payhip.com/b/0VYw3", 
+                    "desc" : "Buku ini membahas tuntas beragam pengaturan untuk tata kelola big data, baik itu data RDBMS atau pun data non RDBMS. Buku ini dirancang sebagai panduan lengkap untuk para administrator Hadoop yang bekerja dengan BigQ Manager versi 2.X."
                 }
             ]
         },
         {
-            "title" : "EDUCATION",
+            "title" : "GITHUB",
             "lists" : [
                 {
-                    "time_text" : "2016 - 2019",
-                    "title" : "Head Royce School US",
-                    "subtitle" :"Business And Managament", 
-                    "desc" : "Graduated with distinction GWA 3.75, completed internship at Head ROyce School."
+                    "time_text" : "2018 - 2018",
+                    "title" : "Real time audio transcoder",
+                    "subtitle" :"Objective-C", 
+                    "desc" : "Dapat dilihat di https://github.com/icescode/jishide.git."
                 },
                 {
-                    "time_text" : "2013 - 2016",
-                    "title" : "St. Kalling's BDA",
-                    "subtitle" :"BS. Sales", 
-                    "desc" : "Graduated with distinction GWA 3.75, leadership awardee  for Student Council service."
+                    "time_text" : "2015 - 2016",
+                    "title" : "Xiph dan UNIX Library",
+                    "subtitle" :"Static Library", 
+                    "desc" : "Sebuah ready made kumpulan static library untuk membangun audio streaming client server."
                 }
             ]
-        }
+        }        
     ]
 }

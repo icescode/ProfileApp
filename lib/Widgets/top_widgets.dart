@@ -1,21 +1,21 @@
 // ignore_for_file: non_constant_identifier_names, prefer_typing_uninitialized_variables, library_private_types_in_public_api, // ignore: file_names
 
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:universal_io/io.dart';
 import 'package:webapp/Classes/profile_data.dart';
-import 'package:webapp/Widgets/content_widgets.dart';
 import 'package:webapp/Shares/libshares.dart';
 
 class StackerTop extends StatefulWidget {
+
   final String apiUrl;
   const StackerTop({Key? key, required this.apiUrl}) : super(key: key);
 
   @override
   // ignore: no_logic_in_create_state, library_private_types_in_public_api
   _StackerTop createState() => _StackerTop(apiUrl);
+
 }
 
 class _StackerTop extends State<StackerTop> {
@@ -25,13 +25,15 @@ class _StackerTop extends State<StackerTop> {
   final double backgroundImageHeight = 200;
   final double profileImageHeight = 150;
 
-  static const double miniDivider = 15.0;
-  static const double bigDivider = 100.0;
+  static const String defaultAssetProfile = 'assets/images/profile-default.png';
+  static const String defaultAssetHeaderImage = 'assets/images/blue_cover.jpg';
+  static const String loadingText = 'Loading ..';
+  static const dividerBig = SizedBox(height: 100.0);
+  static const dividerSmall = SizedBox(height: 15.0);
 
   ProfileData myProfileData = ProfileData();
   List<Stat> myStat = [];
   List<Blocks> myBlocks = [];
-  //List<Content> myContent = [];
   _StackerTop(this.urlApi);
 
   @override
@@ -46,24 +48,24 @@ class _StackerTop extends State<StackerTop> {
     final double circleRadius = (profileImageHeight / 2) + 2;
 
     //image background dan photo profile
-    Widget topDecoration = _topDecoration(posTop, circleRadius);
+    Widget topdecoration = topDecoration(posTop, circleRadius);
 
     //Heading text profile
-    Widget myTextProfile = _headingProfile();
+    Widget myTextProfile = headingProfile();
 
     //deskripsi singkat profile
-    ListTile profileDescription = _styleListProfileDescription(myProfileData.about_heading ?? 'Loading..', myProfileData.about ?? 'Loading..', 'S');
+    ListTile profileDescription = styleListProfileDescription(myProfileData.about_heading ?? loadingText, myProfileData.about ?? loadingText);
 
     List<Widget> visualComponent = [
-      topDecoration,
-      const SizedBox(height: bigDivider),
+      topdecoration,
+      dividerBig,
       myTextProfile,
-      const SizedBox(height: miniDivider),
+      dividerSmall,
       profileDescription,
-      const SizedBox(height: miniDivider),
+      dividerSmall,
     ];
 
-    List<Widget> blocks = _buildBlocks(context);
+    List<Widget> blocks = buildBlocks(context);
     int totalBlocks = blocks.length;
     for (int i = 0; i < totalBlocks; i++) {
       visualComponent.add(blocks[i]);
@@ -76,21 +78,21 @@ class _StackerTop extends State<StackerTop> {
 
   //Method widget komponen
 
-  Widget _topDecoration(double ptop, double cradius) {
+  Widget topDecoration(double ptop, double cradius) {
     /* 
     Karena circle avatar membutuhkan image ImageProvider,
     dan tidak boleh null, maka
     */
     Object tmpProfileImage;
     if (myProfileData.imgProfileUrl == null) {
-      tmpProfileImage = const ExactAssetImage('assets/images/profile-default.png');
+      tmpProfileImage = const ExactAssetImage(defaultAssetProfile);
     } else {
       tmpProfileImage = NetworkImage(myProfileData.imgProfileUrl.toString());
     }
 
     Object tmpBackground;
     if (myProfileData.imgBackgroundUrl == null) {
-      tmpBackground = const Image(image: AssetImage('assets/images/blue_cover.jpg'));
+      tmpBackground = const Image(image: AssetImage(defaultAssetHeaderImage));
     } else {
       tmpBackground = Image.network(
         myProfileData.imgBackgroundUrl.toString(),
@@ -127,7 +129,7 @@ class _StackerTop extends State<StackerTop> {
     );
   }
 
-  ListTile _styleListProfileDescription(String title, String subtitle, String prefix) {
+  ListTile styleListProfileDescription(String title, String subtitle) {
     ListTile tile = ListTile(
       dense: true,
       visualDensity: const VisualDensity(vertical: 4.0),
@@ -138,39 +140,10 @@ class _StackerTop extends State<StackerTop> {
     return tile;
   }
 
-  Widget _basicCard() {
-    var aboutHeading = myProfileData.content_heading;
-    var pretext = myProfileData.content_pretext;
-
-    return Padding(
-      padding: const EdgeInsets.all(5),
-      child: Card(
-        clipBehavior: Clip.antiAlias,
-        color: MyCustomColor.blue(),
-        shape: RoundedRectangleBorder(
-          side: BorderSide(color: MyCustomColor.grayLight(), width: 1.0),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          ListTile(
-            tileColor: Colors.white,
-            leading: Icon(Icons.local_florist, size: MyFontSize.fontBig(), color: MyCustomColor.blue()),
-            title: Text(aboutHeading ?? 'Loading..', style: TextStyle(fontSize: MyFontSize.fontMedium(), fontWeight: FontWeight.normal, color: MyCustomColor.gray())),
-            subtitle: Text(pretext ?? 'Loading..', style: TextStyle(fontSize: MyFontSize.fontNormal(), fontWeight: FontWeight.normal, color: Colors.black87)),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: _buildStat(),
-          ),
-        ]),
-      ),
-    );
-  }
-
-  Widget _headingProfile() => Column(
+  Widget headingProfile() => Column(
         children: [
           Text(
-            myProfileData.name ?? 'Loading',
+            myProfileData.name ?? loadingText,
             style: TextStyle(
               color: MyCustomColor.grayDeep(),
               fontWeight: FontWeight.normal,
@@ -178,7 +151,7 @@ class _StackerTop extends State<StackerTop> {
             ),
           ),
           Text(
-            myProfileData.tagline ?? 'Loading',
+            myProfileData.tagline ?? loadingText,
             style: TextStyle(
               color: MyCustomColor.gray(),
               fontWeight: FontWeight.normal,
@@ -188,7 +161,7 @@ class _StackerTop extends State<StackerTop> {
         ],
       );
 
-  Widget _timeliner(String timeText, String title, String subtitle, String content) {
+  Widget timeliner(String timeText, String title, String subtitle, String content) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -215,7 +188,7 @@ class _StackerTop extends State<StackerTop> {
     );
   }
 
-  List<Widget> _buildBlocks(BuildContext context) {
+  List<Widget> buildBlocks(BuildContext context) {
     int totalBlocks = myBlocks.length;
     List<Widget> retval = [];
 
@@ -225,7 +198,6 @@ class _StackerTop extends State<StackerTop> {
       List tempBlockItem = tempBlock.blockItem as List;
       String headerBlock = tempBlock.title.toString();
 
-      debugPrint('Kalang  pertama $headerBlock');
       List<Widget> retvalItem = [];
       for (int j = 0; j < tempBlockItem.length; j++) {
         BlockItem item = tempBlockItem[j];
@@ -234,17 +206,16 @@ class _StackerTop extends State<StackerTop> {
         String title = item.title.toString();
         String subtitle = item.subtitle.toString();
 
-        retvalItem.add(_timeliner(timeText, title, subtitle, desc));
-        retvalItem.add(const SizedBox(height: 15));
-        debugPrint('timenya $timeText');
-        debugPrint('tdesc nya $desc');
+        retvalItem.add(timeliner(timeText, title, subtitle, desc));
+        retvalItem.add(dividerSmall);
+        
       }
-      retval.add(_buildItemBlock(context, headerBlock, retvalItem));
+      retval.add(buildItemBlock(context, headerBlock, retvalItem));
     }
     return retval;
   }
 
-  Widget _buildItemBlock(BuildContext context, String title, List<Widget> items) {
+  Widget buildItemBlock(BuildContext context, String title, List<Widget> items) {
     return Padding(
       padding: const EdgeInsets.only(left: 30, right: 30, bottom: 15),
       //padding: const EdgeInsets.all(10),
@@ -277,62 +248,7 @@ class _StackerTop extends State<StackerTop> {
     );
   }
 
-  List<Widget> _buildStat() {
-    void prosesIndex(int index, String api, String title, String desc) {
-      if ((api.isEmpty) || (api == '#')) {
-        return;
-      }
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => ContentPage(
-                    apiUrl: api,
-                    barTitle: myProfileData.navigator_title_back.toString(),
-                    description: desc,
-                    title: title,
-                  )));
-
-      // switch (index) {
-      //   case 1:
-      //     debugPrint('Index $index API $api');
-      //     break;
-      //   default:
-      // }
-    }
-
-    Widget statContainer(String value, String text, int index, String api, String desc) => MaterialButton(
-          padding: const EdgeInsets.symmetric(vertical: 4),
-          onPressed: () {
-            prosesIndex(index, api, text, desc);
-          },
-          child: Column(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
-            Text(value,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.normal,
-                  fontSize: MyFontSize.fontHuge(),
-                )),
-            const SizedBox(height: 2),
-            Text(text,
-                style: TextStyle(
-                  color: Colors.black87,
-                  fontWeight: FontWeight.normal,
-                  fontSize: MyFontSize.fontStandar(),
-                )),
-          ]),
-        );
-
-    List<Widget> retval = [];
-    int totalData = myStat.length;
-    for (int i = 0; i < totalData; i++) {
-      var item = myStat[i];
-      Widget children = statContainer(item.value.toString(), item.title.toString(), item.index!, item.api.toString(), item.desc.toString());
-      retval.add(children);
-    }
-    return retval;
-  }
-
-  loadDataProfile() async {
+  void loadDataProfile() async {
     var client = HttpClient();
     try {
       client.badCertificateCallback = (X509Certificate cert, String host, int port) => true;
