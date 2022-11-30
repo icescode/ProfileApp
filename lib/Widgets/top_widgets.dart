@@ -133,7 +133,7 @@ class _StackerTop extends State<StackerTop> {
     ListTile tile = ListTile(
       dense: true,
       visualDensity: const VisualDensity(vertical: 4.0),
-      title: Text(title, style: TextStyle(fontSize: MyFontSize.fontMedium(), fontWeight: FontWeight.bold, color: Colors.black)),
+      title: Text(title, style: TextStyle(fontSize: MyFontSize.fontMedium(), fontWeight: FontWeight.w100, color: Colors.black)),
       subtitle: Text(subtitle, style: TextStyle(fontSize: MyFontSize.fontNormal(), fontWeight: FontWeight.normal, color: Colors.black)),
     );
 
@@ -165,13 +165,13 @@ class _StackerTop extends State<StackerTop> {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(timeText, style: TextStyle(fontSize: MyFontSize.fontNormal(), fontWeight: FontWeight.bold, color: Colors.black)),
+        Text(timeText, style: TextStyle(fontSize: MyFontSize.fontNormal(), fontWeight: FontWeight.normal, color: Colors.black)),
         const SizedBox(width: 20),
         Expanded(
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(title, style: TextStyle(fontSize: MyFontSize.fontNormal(), fontWeight: FontWeight.bold, color: Colors.black)),
+            Text(title, style: TextStyle(fontSize: MyFontSize.fontNormal(), fontWeight: FontWeight.normal, color: Colors.black)),
             Text(subtitle, style: TextStyle(fontSize: MyFontSize.fontNormal(), fontWeight: FontWeight.normal, color: MyCustomColor.grayDeep())),
             Container(
               decoration: BoxDecoration(

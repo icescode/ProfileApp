@@ -63,14 +63,7 @@ flutter:
     - family: Cuprum
       fonts:
         - asset: fonts/Cuprum-Regular.ttf
-        - asset: fonts/Cuprum-Italic.ttf
-        - asset: fonts/Cuprum-Bold.ttf
-        - asset: fonts/Cuprum-BoldItalic.ttf
-        - asset: fonts/Cuprum-Medium.ttf
-        - asset: fonts/Cuprum-MediumItalic.ttf
-        - asset: fonts/Cuprum-SemiBold.ttf
-        - asset: fonts/Cuprum-SemiBoldItalic.ttf
-          weight: 400
+          weight: 100
   assets :
     - assets/images/
   # The following line ensures that the Material Icons font is
