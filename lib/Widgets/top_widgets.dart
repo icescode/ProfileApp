@@ -133,8 +133,8 @@ class _StackerTop extends State<StackerTop> {
     ListTile tile = ListTile(
       dense: true,
       visualDensity: const VisualDensity(vertical: 4.0),
-      title: Text(title, style: TextStyle(fontSize: MyFontSize.fontMedium(), fontWeight: FontWeight.w100, color: Colors.black)),
-      subtitle: Text(subtitle, style: TextStyle(fontSize: MyFontSize.fontNormal(), fontWeight: FontWeight.normal, color: Colors.black)),
+      title: Text(title, style: TextStyle(fontSize: MyFontSize.fontMedium(), fontWeight: FontWeight.w100, color: MyCustomColor.blue())),
+      subtitle: Text(subtitle, style: TextStyle(fontSize: MyFontSize.fontNormal(), fontWeight: FontWeight.normal, color:MyCustomColor.gray())),
     );
 
     return tile;
