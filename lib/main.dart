@@ -37,8 +37,8 @@ class _MyHomePageState extends State<MyHomePage> {
     Layanan API content type nya application/json
   */
 
-  final String apiStartPoint = 'https://api.npoint.io/153137cab500f8c8f7bd';
-
+  //final String apiStartPoint = 'https://api.npoint.io/153137cab500f8c8f7bd';
+  final String apiStartPoint = 'https://web.hardiyanto.my.id/jsons/profile.json';
   @override
   Widget build(BuildContext context) {
     StackerTop topStacker = StackerTop(apiUrl: apiStartPoint);

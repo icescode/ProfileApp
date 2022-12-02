@@ -27,7 +27,9 @@ class _StackerTop extends State<StackerTop> {
 
   static const String defaultAssetProfile = 'assets/images/profile-default.png';
   static const String defaultAssetHeaderImage = 'assets/images/blue_cover.jpg';
-  static const String loadingText = 'Loading ..';
+  static const String loadingText = 'Loading Data Please Wait..';
+  static const String placeholderText = '';
+
   static const dividerBig = SizedBox(height: 100.0);
   static const dividerSmall = SizedBox(height: 15.0);
 
@@ -54,7 +56,7 @@ class _StackerTop extends State<StackerTop> {
     Widget myTextProfile = headingProfile();
 
     //deskripsi singkat profile
-    ListTile profileDescription = styleListProfileDescription(myProfileData.about_heading ?? loadingText, myProfileData.about ?? loadingText);
+    ListTile profileDescription = styleListProfileDescription(myProfileData.about_heading ?? placeholderText, myProfileData.about ?? placeholderText);
 
     List<Widget> visualComponent = [
       topdecoration,
@@ -151,7 +153,7 @@ class _StackerTop extends State<StackerTop> {
             ),
           ),
           Text(
-            myProfileData.tagline ?? loadingText,
+            myProfileData.tagline ?? placeholderText,
             style: TextStyle(
               color: MyCustomColor.gray(),
               fontWeight: FontWeight.normal,
