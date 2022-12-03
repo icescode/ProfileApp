@@ -32,10 +32,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   //final String apiStartPoint = 'https://api.npoint.io/153137cab500f8c8f7bd';
-  final String apiStartPoint = 'https://web.hardiyanto.my.id/jsons/profile.json';
+  //final String apiStartPoint = 'https://web.hardiyanto.my.id/jsons/profile.json';
   @override
   Widget build(BuildContext context) {
-    StackerTop topStacker = StackerTop(apiUrl: apiStartPoint);
+    StackerTop topStacker = const StackerTop();
 
     return Scaffold(
       backgroundColor: Colors.white,

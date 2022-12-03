@@ -1,0 +1,72 @@
+{
+    "name" : "Hardiyanto Local",
+    "tagline" : "A Mystical Journey Through The Stars",
+    "img_background_url" : null,
+    "img_profile_url" : null,
+    "about_heading" : "Tentang Saya",
+    "content_heading" : "Konten",
+    "content_pretext" : "Silahkan tap salah satu kategori di bawah ini",
+    "about" :"Hi Saya Hardiyanto, berikut adalah kumpulan catatan kerja dan hobi. Beberapa artikel merupakan artikel teknologi informasi dari sebuah studi kasus project, source code tersedia di github (public) dan merupakan koleksi koleksi lama dalam bahasa C/C++/Objective-C/Phyton dan sebagainya.",
+    "blocks" :[
+        {
+            "title" : "PROJECTS",
+            "lists" : [
+                {
+                    "time_text" : "2022 - 2022",
+                    "title" : "Sistem Auditor",
+                    "subtitle" :"Kementrian Kesehatan Philipina", 
+                    "desc" : "Audit holistik sistem Teknologi Informasi dan infrastruktur Kementrian Kesehatan Philipina."
+                },
+                {
+                    "time_text" : "2020 - 2021",
+                    "title" : "Back End Developer Arsitek",
+                    "subtitle" :"Sinarmas Logistik Indonesia", 
+                    "desc" : "Membangun sistem back end logistik dan transportasi menggunakan sistem ERP bersama sama team internal front-end."
+                },
+                {
+                    "time_text" : "2019 - 2020",
+                    "title" : "Big Data Command Center ",
+                    "subtitle" :"TMBigData Singapore", 
+                    "desc" : "Membangun sistem manajemen big data front-end untuk memudahkan tata kelola Apache Hadoop, Spark, Parquet dan Driller."
+                }                
+            ]
+        },
+        {
+            "title" : "BUKU SAYA",
+            "fancy" : "yes",
+            "lists" : [
+                {
+                    "url" : "https://api.npoint.io/20e0f270652f81949257",
+                    "time_text" : "2020 - 2022",
+                    "title" : "Petunjuk Operasional Big Data menggunakan BigQ Manager",
+                    "subtitle" :"Penerbit Payhip Press 2021", 
+                    "desc" : "Buku ini merupakan petunjuk operasional yang dirancang untuk staff atau data entry operator atau sejenis nya, buku ini mengupas dan membimbing bagaimana melakukan proses storing data dengan metode langsung, append dan partisi dari beragam sumber data RDBMS, kunjungi https://payhip.com/b/nTh9G"
+                },
+                {
+                    "url" : "https://api.npoint.io/20e0f270652f81949257",
+                    "time_text" : "2020 - 2022",
+                    "title" : "Tata Kelola Big Data menggunakan BigQ Manager",
+                    "subtitle" :"Penerbit Payhip Press 2021", 
+                    "desc" : "Buku ini membahas tuntas beragam pengaturan untuk tata kelola big data, baik itu data RDBMS atau pun data non RDBMS. Buku ini dirancang sebagai panduan lengkap untuk para administrator Hadoop yang bekerja dengan BigQ Manager versi 2.X., kunjungi https://payhip.com/b/0VYw3"
+                }
+            ]
+        },
+        {
+            "title" : "GITHUB",
+            "lists" : [
+                {
+                    "time_text" : "2018",
+                    "title" : "Real time audio transcoder",
+                    "subtitle" :"Objective-C", 
+                    "desc" : "Dapat dilihat di https://github.com/icescode/jishide.git."
+                },
+                {
+                    "time_text" : "2016",
+                    "title" : "Xiph dan UNIX Library",
+                    "subtitle" :"Static Library", 
+                    "desc" : "Sebuah ready made kumpulan static library untuk membangun audio streaming client server."
+                }
+            ]
+        }        
+    ]
+}

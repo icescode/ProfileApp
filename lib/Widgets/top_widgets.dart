@@ -3,30 +3,27 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:universal_io/io.dart';
 import 'package:webapp/Classes/profile_data.dart';
 import 'package:webapp/Shares/libshares.dart';
 
 class StackerTop extends StatefulWidget {
 
-  final String apiUrl;
-  const StackerTop({Key? key, required this.apiUrl}) : super(key: key);
+  const StackerTop({super.key}) ;
 
   @override
-  // ignore: no_logic_in_create_state, library_private_types_in_public_api
-  _StackerTop createState() => _StackerTop(apiUrl);
+  State<StackerTop> createState() => _StackerTop();
 
 }
 
 class _StackerTop extends State<StackerTop> {
-  //final ProfileParams theParams;
-  final String urlApi;
-
+  
   final double backgroundImageHeight = 200;
-  final double profileImageHeight = 150;
+  final double profileImageHeight = 200;
 
-  static const String defaultAssetProfile = 'assets/images/profile-default.png';
-  static const String defaultAssetHeaderImage = 'assets/images/blue_cover.jpg';
+  static const String defaultAssetProfile = 'assets/images/default_profile_image.jpg';
+  static const String defaultAssetHeaderImage = 'assets/images/default_header_image.jpg';
   static const String loadingText = 'Loading Data Please Wait..';
   static const String placeholderText = '';
 
@@ -34,9 +31,8 @@ class _StackerTop extends State<StackerTop> {
   static const dividerSmall = SizedBox(height: 15.0);
 
   ProfileData myProfileData = ProfileData();
-  List<Stat> myStat = [];
   List<Blocks> myBlocks = [];
-  _StackerTop(this.urlApi);
+  _StackerTop();
 
   @override
   void initState() {
@@ -84,6 +80,8 @@ class _StackerTop extends State<StackerTop> {
     /* 
     Karena circle avatar membutuhkan image ImageProvider,
     dan tidak boleh null, maka
+    "img_background_url" : "https://iili.io/HKSCwMP.jpg",
+    "img_profile_url" : "https://iili.io/HdzEeqP.jpg",    
     */
     Object tmpProfileImage;
     if (myProfileData.imgProfileUrl == null) {
@@ -163,7 +161,9 @@ class _StackerTop extends State<StackerTop> {
         ],
       );
 
-  Widget timeliner(String timeText, String title, String subtitle, String content) {
+  Widget timeliner(String timeText, String title, String subtitle, String content, bool full) {
+
+    if (!full) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -188,6 +188,34 @@ class _StackerTop extends State<StackerTop> {
         ))
       ],
     );
+    }
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: 
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(title, style: TextStyle(fontSize: MyFontSize.fontNormal(), fontWeight: FontWeight.normal, color: MyCustomColor.blue())),
+                    Text(subtitle, style: TextStyle(fontSize: MyFontSize.fontNormal(), fontWeight: FontWeight.normal, color: Colors.white)),
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(width: 0.4, color: MyCustomColor.gray()),
+                        ),
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text(content, style: TextStyle(fontSize: MyFontSize.fontNormal(), fontWeight: FontWeight.normal, color: Colors.white60)),
+                  ],
+                ))
+          ],
+        ),
+    );
+
   }
 
   List<Widget> buildBlocks(BuildContext context) {
@@ -199,6 +227,7 @@ class _StackerTop extends State<StackerTop> {
       Blocks tempBlock = myBlocks[i];
       List tempBlockItem = tempBlock.blockItem as List;
       String headerBlock = tempBlock.title.toString();
+      
 
       List<Widget> retvalItem = [];
       for (int j = 0; j < tempBlockItem.length; j++) {
@@ -207,17 +236,38 @@ class _StackerTop extends State<StackerTop> {
         String desc = item.desc.toString();
         String title = item.title.toString();
         String subtitle = item.subtitle.toString();
-
-        retvalItem.add(timeliner(timeText, title, subtitle, desc));
+        if (tempBlock.fancy == null) {
+          retvalItem.add(timeliner(timeText, title, subtitle, desc,false));
+        }else {
+          retvalItem.add(timeliner(timeText, title, subtitle, desc,true));
+        }
+        
         retvalItem.add(dividerSmall);
         
       }
-      retval.add(buildItemBlock(context, headerBlock, retvalItem));
+      if(tempBlock.fancy == null) {
+        retval.add(buildItemBlock(context, headerBlock, retvalItem, true));
+      }else {
+        retval.add(buildItemBlock(context, headerBlock, retvalItem, false));
+      }
+      
     }
     return retval;
   }
 
-  Widget buildItemBlock(BuildContext context, String title, List<Widget> items) {
+  Widget buildItemBlock(BuildContext context, String title, List<Widget> items,bool full) {
+    Color tempColor = const Color.fromARGB(255, 255, 255, 255);
+    double barSize = MediaQuery.of(context).size.width / 2;
+    Color barColor = MyCustomColor.blue();
+    Color barTextColor = const Color.fromARGB(255, 255, 255, 255);
+
+    if (!full) {
+      tempColor = const Color.fromARGB(255, 48, 47, 47);
+      barSize = MediaQuery.of(context).size.width;
+      barColor = Colors.white;
+      barTextColor = MyCustomColor.blue();
+    }
+
     return Padding(
       padding: const EdgeInsets.only(left: 30, right: 30, bottom: 15),
       //padding: const EdgeInsets.all(10),
@@ -225,19 +275,19 @@ class _StackerTop extends State<StackerTop> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-              color: MyCustomColor.blue(),
-              width: MediaQuery.of(context).size.width / 2,
+              color: barColor,
+              width: barSize,
               child: Padding(
                 padding: const EdgeInsets.all(5),
-                child: Text(title, style: TextStyle(fontSize: MyFontSize.fontNormal(), fontWeight: FontWeight.normal, color: Colors.white)),
+                child: Text(title, style: TextStyle(fontSize: MyFontSize.fontNormal(), fontWeight: FontWeight.normal, color:barTextColor)),
               )),
-          const SizedBox(height: 10),
+          const SizedBox(height: 5),
           Container(
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(width: 0.5, color: MyCustomColor.blue()),
               ),
-              color: Colors.white,
+              color: tempColor,
             ),
             //color: Colors.white,
             width: MediaQuery.of(context).size.width,
@@ -251,21 +301,26 @@ class _StackerTop extends State<StackerTop> {
   }
 
   void loadDataProfile() async {
-    var client = HttpClient();
+    //var client = HttpClient();
     try {
+
+      /*
       client.badCertificateCallback = (X509Certificate cert, String host, int port) => true;
       HttpClientRequest request = await client.getUrl(Uri.parse(urlApi));
       request.headers.set('content-type', 'application/json');
-      HttpClientResponse response = await request.close();
-      final stringData = await response.transform(utf8.decoder).join();
+      HttpClientResponse response = await request.close();      
+      final stringData = await response.transform(utf8.decoder).join();      
       var jsonData = await json.decode(stringData);
+      */
+      String localProfileJson = await rootBundle.loadString('assets/json/profile.json');
+      final stringData = await jsonDecode(localProfileJson);
+
       setState(() {
-        myProfileData = ProfileData.fromJson(jsonData);
-        myStat = myProfileData.stat!;
+        myProfileData = ProfileData.fromJson(stringData);
         myBlocks = myProfileData.blocks!;
       });
     } finally {
-      client.close();
+      //client.close();
     }
   }
 }
